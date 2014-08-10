@@ -1,0 +1,51 @@
+%div
+	%div.row
+		%div.col-md-6
+			%img{src:'https://farm6.staticflickr.com/5161/5329705003_c50082b735_o.jpg',style:'width:100%'}
+		%div#teachers.col-md-6
+			%a.twitter-timeline{:href=>"https://twitter.com/search?q=%23kihwanuji-univ",:'data-widget-id'=>"495542858175115264"}
+			:javascript
+				!function(d,s,id){
+					var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https'
+					if(!d.getElementById(id)){
+						js=d.createElement(s)
+						js.id=id
+						js.src=p+"://platform.twitter.com/widgets.js"
+						fjs.parentNode.insertBefore(js,fjs)
+					}
+				}(document,"script","twitter-wjs")
+%div
+	%div.row
+		%div.col-md-6
+			%h2= t('student')
+			%ul
+				- @students.each do |student|
+					%li= list_item(:student, student)
+		%div.col-md-6
+			%h2= t('teacher')
+			%ul
+				- @teachers.each do |teacher|
+					%li= list_item(:teacher, teacher)
+	%div.row
+		%div.col-md-6
+			%h2= t('model.course.type.bachelor')
+			%ul
+				- @bachelor_courses.each do |course|
+					%li= list_item(:course, course)
+		%div.col-md-6
+			%h2= t('model.course.type.graduate')
+			%ul
+				- @graduate_courses.each do |course|
+					%li= list_item(:course, course)
+	%div.row
+		%div.col-md-6
+			%h2= t('lecture')
+			%ul
+				- @lectures.each do |lecture|
+					%li= list_item(:lecture, lecture)
+			%a{href:'/lectures/timetable'}= t('timetable')
+		%div.col-md-6
+			%h2= t('paper')
+			%ul
+				- @papers.each do |paper|
+					%li= list_item(:paper, paper)

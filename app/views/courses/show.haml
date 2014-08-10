@@ -1,0 +1,22 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			%a{href:"/courses"}= t('course')
+		%li
+			= "#{@course.name}#{t("model.course.type.#{@course.type}")}"
+%h2= "#{@course.name}#{t("model.course.type.#{@course.type}")}"
+%a{href:"/courses/#{@course.id}/edit"}= t('edit')
+!= markdown2html academic @course.description
+%div.row
+	%div.col-md-6
+		%h3 教官
+		%ul
+		- @course.teachers.enabled.each do |teacher|
+			%li= list_item(:teacher, teacher)
+	%div.col-md-6
+		%h3 学生
+		%ul
+		- @course.students.enabled.each do |student|
+			%li= list_item(:student, student)

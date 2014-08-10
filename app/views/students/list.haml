@@ -1,0 +1,10 @@
+- content_for(:navigation) do
+	%ol.breadcrumb
+		%li
+			%a{href:'/'}= t('top')
+		%li
+			= t('student')
+%h2= t('student')
+%ul
+- @students.each do |student|
+	%li= list_item(:student, student)
